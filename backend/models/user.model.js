@@ -18,7 +18,7 @@ const userSchema=({
     gender:{
         type: String,
         required: true,
-        enum:["male","female","other"]
+        enum:["male","female"]
     },
     profilePic:{
         type:String,
@@ -26,4 +26,7 @@ const userSchema=({
     }
 });
 
-export default User=mongoose.model("User",userSchema);
+
+const User=mongoose.model("User",userSchema);
+
+export default User;
