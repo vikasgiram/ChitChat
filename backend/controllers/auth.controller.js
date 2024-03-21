@@ -44,13 +44,35 @@ export const signup=async (req,res)=>{
             res.status(400).json({error:"Invalid user data"});
         }
     } catch (err) {
-        console.log("Error in signing controller: ",err);
+        console.log("Error in signing controller: ",err.message);
         res.status(500).json({error:"Internal Server Error"});
     }
 }
 
-export const login=(req,res)=>{
-    res.send("login");
+export const login=async (req,res)=>{
+    try{
+        const {username, password}=req.body;
+        const user=await User.findOne({username});
+        const isPasswordCorrect=await bcrypt.compare(password,user.password || '');
+
+        if(!user || !isPasswordCorrect){
+            console.log("user:",user);
+            console.log("password match:",isPasswordCorrect);
+            return res.status(400).json({error:"Invalid Username or password"});
+        }
+
+        generateTokenAndSetCookie(user.id,res);
+
+        res.status(200).json({
+            _id:user._id,
+            name:user.name,
+            username:user.username,
+            profilePic: user.profilePic
+        });
+    }catch (err) {
+        console.log("Error in login controller: ",err.message);
+        res.status(500).json({error:"Internal Server Error"});
+    }
 }
 
 export const logout=(req,res)=>{
