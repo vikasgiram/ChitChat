@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 import generateTokenAndSetCookie from "../utils/generateToken.js";
+import { json } from "express";
 
 export const signup=async (req,res)=>{
     try {
@@ -75,6 +76,12 @@ export const login=async (req,res)=>{
     }
 }
 
-export const logout=(req,res)=>{
-    res.send("Logout");
+export const logout=async (req,res)=>{
+    try {
+        res.cookie("jwt", "", {maxAge:0});
+        res.status(200).json({message:"Logout successfully"});
+    } catch (err) {
+        console.log("Error in logout controller:",err.message);
+        res.status(500).json({error:"Internal Server Error"});
+    }
 }
