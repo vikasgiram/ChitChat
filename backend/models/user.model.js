@@ -21,10 +21,10 @@ const userSchema=({
         enum:["male","female"]
     },
     profilePic:{
-        type:String,
+        type: String,
         default:"",
     }
-});
+},{timestamps:true});
 
 
 const User=mongoose.model("User",userSchema);
