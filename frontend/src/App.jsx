@@ -1,18 +1,12 @@
 import './App.css'
+import Home from './pages/home/Home'
+import Login from './pages/login/Login'
+import SignUp from './pages/signup/SignUp'
 
 function App() {
-
-  return (
-    <>
-      <button class="btn">Button</button>
-      <button class="btn btn-neutral">Neutral</button>
-      <button class="btn btn-primary">Primary</button>
-      <button class="btn btn-secondary">Secondary</button>
-      <button class="btn btn-accent">Accent</button>
-      <button class="btn btn-ghost">Ghost</button>
-      <button class="btn btn-link">Link</button>
-    </>
-  )
+  return <div className='p-4 h-screen flex items-center justify-center'>
+    <Home/>
+  </div>
 }
 
 export default App
