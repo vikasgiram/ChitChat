@@ -25,6 +25,8 @@ export const sendMessage= async(req,res)=>{
         if(newMessage){
             convervation.message.push(newMessage._id);
         }
+        //Socket io functionality will go here
+
         
         // await convervation.save();
         // await newMessage.save();
@@ -35,6 +37,30 @@ export const sendMessage= async(req,res)=>{
 
     }catch(err){
         console.log("Error in sendMessage controller: ",err.message);
+        res.status(500).json({error:"Internal Server Error"});
+    }
+}
+
+export const getMessages= async(req,res)=>{
+    try{
+
+        const {id:userToChatId}=req.params;
+        const senderId=req.user._id;
+
+        const conversation= await Convervation.findOne({
+            participants:{$all:[senderId, userToChatId]},
+        }).populate("message"); // reference but actual messages
+        
+        if(!conversation){
+            res.status(200).json([]);
+        }
+
+        const messages=conversation.message;
+
+        res.status(200).json(messages);
+
+    }catch(err){
+        console.log("Error in getMessage controller: ",err.message);
         res.status(500).json({error:"Internal Server Error"});
     }
 }
