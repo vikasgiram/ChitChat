@@ -5,8 +5,9 @@ import { json } from "express";
 
 export const signup=async (req,res)=>{
     try {
-        const{name, username, password, confirmpassword, gender}=req.body;
-        if(password !== confirmpassword){
+        const{name, username, password, confirmPassword, gender}=req.body;
+        if(password !== confirmPassword){
+            console.log(password,confirmPassword);
             return res.status(400).json({error:"Password don't match"});
         }
 
@@ -22,14 +23,16 @@ export const signup=async (req,res)=>{
 
         const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
 		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
-
+        
         const newUser=new User({
-            name,
-            username,
+            name:name,
+            username:username,
             password: hashPassword,
-            gender,
+            gender:gender,
             profilePic: gender === "male"? boyProfilePic: girlProfilePic,
         });
+        console.log(name);
+        console.log(newUser);
 
         if(newUser){
             // Generate JWT token here
