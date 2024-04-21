@@ -1,4 +1,4 @@
-# ChitChat:
+# ChitChat
     It is a cutting-edge web application designed to revolutionize the way people communicate online. With its sleek design, intuitive interface, and powerful features, ChitChat offers users a seamless and enjoyable chatting experience like never before.
 
 
