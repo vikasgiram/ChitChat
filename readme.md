@@ -23,13 +23,37 @@ ChitChat is the ultimate destination for users looking to connect, communicate, 
 
 (live Link)[https://chitchat-7fur.onrender.com/]
 
-step 1: ```git clone https://github.com/vikasgiram/ChitChat.git ```
-step 2: ```cd ChitChat```
-step 3: ```npm i```
-step 4: ```cd frontend/```
-step 5: ```npm i```
-step 6: ``` cd ../```
-step 7: ```npm run build```
-step 8: ```npm start```
+step 1:
+```
+git clone https://github.com/vikasgiram/ChitChat.git
+```
+step 2: 
+```
+cd ChitChat
+```
+step 3:
+```
+ npm i
+```
+step 4:
+```
+cd frontend/
+```
+step 5:
+```
+npm i
+```
+step 6:
+```
+cd ../
+```
+step 7:
+```
+npm run build
+```
+step 8:
+```
+npm start
+```
 
-access it at (http://localhost:5000/)[http://localhost:5000/]
+access it at [http://localhost:5000/]
