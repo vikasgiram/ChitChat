@@ -17,3 +17,19 @@ Key Features:
 
 
 ChitChat is the ultimate destination for users looking to connect, communicate, and collaborate online. Whether users are catching up with friends, collaborating with colleagues, or meeting new people, ChitChat provides the tools and features they need to stay connected and engaged. With its modern design, powerful features, and commitment to user security and privacy, ChitChat is poised to become the go-to platform for online communication.
+
+
+## Development:
+
+(live Link)[https://chitchat-7fur.onrender.com/]
+
+step 1: ```git clone https://github.com/vikasgiram/ChitChat.git ```
+step 2: ```cd ChitChat```
+step 3: ```npm i```
+step 4: ```cd frontend/```
+step 5: ```npm i```
+step 6: ``` cd ../```
+step 7: ```npm run build```
+step 8: ```npm start```
+
+access it at (http://localhost:5000/)[http://localhost:5000/]
