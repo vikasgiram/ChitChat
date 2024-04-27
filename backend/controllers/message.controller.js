@@ -41,18 +41,19 @@ export const sendMessage= async(req,res)=>{
     }
 }
 
-export const getMessages= async(req,res)=>{
+export const getMessages= async (req, res)=>{
     try{
 
-        const {id:userToChatId}=req.params;
+        const { id: userToChatId }=req.params;
         const senderId=req.user._id;
 
         const conversation= await Convervation.findOne({
-            participants:{$all:[senderId, userToChatId]},
+            participants:{ $all: [senderId, userToChatId] },
         }).populate("message"); // reference but actual messages
         
+        
         if(!conversation){
-            res.status(200).json([]);
+            return res.status(200).json([]);
         }
 
         const messages=conversation.message;
