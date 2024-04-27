@@ -1,5 +1,6 @@
 import Convervation from "../models/conversation.model.js"
 import Message from "../models/message.model.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage= async(req,res)=>{
     try{
@@ -25,13 +26,18 @@ export const sendMessage= async(req,res)=>{
         if(newMessage){
             convervation.message.push(newMessage._id);
         }
-        //Socket io functionality will go here
-
+        
         
         // await convervation.save();
         // await newMessage.save();
         // it save the changes in database in parallel 
         await Promise.all([convervation.save(),newMessage.save()]);
+
+        //Socket io functionality will go here
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if(getReceiverSocketId){
+            io.to(receiverSocketId).emit("newMessage", newMessage);
+        }
 
         res.status(201).json(newMessage);
 
